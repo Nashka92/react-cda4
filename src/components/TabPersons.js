@@ -1,5 +1,5 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Assurez-vous que Bootstrap est importé si nécessaire
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function TabPersons() {
     const personsTab = [
