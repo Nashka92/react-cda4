@@ -6,8 +6,7 @@ import Listing from "./components/exercice_2/Listing";
 import FizzBuzz from "./components/exercice_3/FizzBuzz";
 import Inputs from "./components/exercice_4/Inputs";
 import UseEffectExo from "./components/exercice_5/UseEffectExo";
-import DisplayContact from "./components/exercice_6/DisplayContact";
-import Form from "./components/exercice_6/Form";
+import ContactContainer from "./components/ContactContainer"
 
 function App() {
   return (
@@ -17,8 +16,7 @@ function App() {
       <FizzBuzz />
       <Inputs />
       <UseEffectExo valueNum={20} />
-      <Form ajouterContact={ajouterContact} />
-      <DisplayContact contacts={contacts} />
+      <ContactContainer/>
     </div>
   );
 }

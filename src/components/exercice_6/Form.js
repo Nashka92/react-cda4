@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 
-
 const Form = ({ ajouterContact }) => {
   const [nom, setNom] = useState("");
   const [prenom, setPrenom] = useState("");
   const [age, setAge] = useState("");
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    ajouterContact({ nom, prenom, age });
+  const handleSubmit = () => {
+    const contact = { nom: nom, prenom: prenom, age: age };
+    ajouterContact(contact);
     setNom("");
     setPrenom("");
     setAge("");
@@ -16,24 +15,32 @@ const Form = ({ ajouterContact }) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSubmit();
+        }}
+      >
+        <label>Nom</label>
         <input
           type="text"
           placeholder="Nom"
           value={nom}
-          onChange={(e) => setNom(e.target.value)}
+          onInput={(e) => setNom(e.target.value)}
         />
+        <label>Prénom</label>
         <input
           type="text"
           placeholder="Prénom"
           value={prenom}
-          onChange={(e) => setPrenom(e.target.value)}
+          onInput={(e) => setPrenom(e.target.value)}
         />
+        <label>Age</label>
         <input
           type="number"
           placeholder="Age"
           value={age}
-          onChange={(e) => setAge(e.target.value)}
+          onInput={(e) => setAge(e.target.value)}
         />
         <button type="submit">Envoyer</button>
       </form>
