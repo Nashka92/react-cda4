@@ -1,4 +1,5 @@
 import React from "react";
+import LoginForm from "./components/exercice_7/LoginForm";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 // import TabPersons from "./components/exercice_1/TabPersons";
@@ -7,9 +8,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // import Inputs from "./components/exercice_4/Inputs";
 // import UseEffectExo from "./components/exercice_5/UseEffectExo";
 // import ContactContainer from "./components/ContactContainer"
-import BookApp from "./components/exercice_6bis/BookApp";
+// import BookApp from "./components/exercice_6bis/BookApp";
 
 function App() {
+
+  const handleLogin = (user, pass) => {
+    console.log(`Les infos de l'utilisateur: ${user} - ${pass}`);
+  }
+
   return (
     <div className="App">
       {/* <TabPersons />
@@ -18,7 +24,8 @@ function App() {
       <Inputs />
       <UseEffectExo valueNum={20} />
       <ContactContainer/> */}
-      <BookApp/>
+      {/* <BookApp/> */}
+      <LoginForm loginProps={handleLogin} />
     </div>
   );
 }
