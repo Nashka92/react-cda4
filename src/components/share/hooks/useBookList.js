@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 const useBookList = (url) => {
   const [books, setBooks] = useState([]);
@@ -20,8 +20,25 @@ const useBookList = (url) => {
     fetchBooks();
   }, [url]);
 
-  return { books, loading };
+  const addBook = async (newBook) => {
+    try {
+      const response = await fetch(`http://localhost:3010/ajout-livre`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newBook)
+      });
+      const addedBook = await response.json();
+  
+      setBooks([...books, addedBook]);
+    } catch (error) {
+      console.error("Erreur lors de l'ajout du livre", error);
+    }
+  };
+  
+
+  return { books, loading, addBook };
 };
 
 export default useBookList;
-
