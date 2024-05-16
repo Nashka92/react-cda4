@@ -40,6 +40,20 @@ const products = [
     description:
       "Un meuble toujours dans l’air du temps, plébiscité par les amateurs de livres.",
     price: 80,
+  },
+  {
+    id: 7,
+    name: "Canapé",
+    description:
+      "Un meuble toujours dans l’air du temps, plébiscité par les amateurs de livres.",
+    price: 700,
+  },
+  {
+    id: 8,
+    name: "Lit",
+    description:
+      "Un meuble toujours dans l’air du temps, plébiscité par les amateurs de livres.",
+    price: 300,
   }
 ];
 
@@ -48,6 +62,7 @@ const CardItems = () => {
   const { cart, addToCart } = useCart();
 
   const total = cart.reduce((acc, curr) => acc + curr.price, 0);
+  const displayCumulItem = cart.reduce((acc, curr) => acc + curr.name, 0);
 
   return (
     <div className="flex flex-wrap gap-4 m-[15px]">
@@ -55,9 +70,10 @@ const CardItems = () => {
         <div className="card" style={{ width: "18rem" }} key={product.id}>
           <div className="card-body">
             <h6 className="card-title">
-              {product.name} - {product.price}€
+              {product.name}
             </h6>
             <p className="card-text">{product.description}</p>
+            <p>Prix: {product.price}€</p>
             <button
               className="btn btn-primary"
               onClick={() => addToCart(product)}
@@ -67,6 +83,8 @@ const CardItems = () => {
           </div>
         </div>
       ))}
+      <ul>
+      <li className="border">{displayCumulItem}</li></ul>
       <p className="border">Total: {total}€</p>
     </div>
   );
